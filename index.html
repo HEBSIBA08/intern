@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Internship Board</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to internship listings</a>
+
+  <header class="site-header">
+    <div class="container">
+      <h1>Internship Board</h1>
+      <p class="subtitle">Explore beginner-friendly roles across engineering, design, and data.</p>
+    </div>
+  </header>
+
+  <main id="main-content" class="container">
+    <!-- Filter & Search Controls -->
+    <section class="controls-section" aria-label="Filter internships">
+      <form id="filter-form" class="filter-bar" role="search">
+        <div class="form-group">
+          <label for="search-input">Search roles or companies</label>
+          <input
+            type="search"
+            id="search-input"
+            name="search"
+            placeholder="e.g. Frontend, Acme, Remote..."
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="domain-select">Filter by domain</label>
+          <select id="domain-select" name="domain">
+            <option value="all">All Domains</option>
+            <option value="Frontend">Frontend</option>
+            <option value="Backend">Backend</option>
+            <option value="Design">Design</option>
+            <option value="Data">Data</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" id="reset-btn" class="btn-secondary">Reset</button>
+          <button type="button" id="simulate-error-btn" class="btn-outline" title="Test error handling">
+            Test Error
+          </button>
+        </div>
+      </form>
+
+      <!-- Live status announcement for screen readers -->
+      <p id="results-count" class="results-count" aria-live="polite"></p>
+    </section>
+
+    <!-- Listings Grid -->
+    <section aria-label="Internship results">
+      <div id="internship-grid" class="internship-grid"></div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="state-box" hidden>
+        <h2>No matching internships found</h2>
+        <p>Try adjusting your search keywords or selecting a different domain.</p>
+        <button type="button" id="empty-reset-btn" class="btn-primary">Clear all filters</button>
+      </div>
+
+      <!-- Error State -->
+      <div id="error-state" class="state-box error-box" role="alert" hidden>
+        <h2>Unable to load internships</h2>
+        <p id="error-message">Something went wrong while fetching the listings.</p>
+        <button type="button" id="retry-btn" class="btn-primary">Retry</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Built with semantic HTML, responsive CSS, and vanilla JavaScript.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
